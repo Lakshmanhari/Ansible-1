@@ -1,0 +1,17 @@
+plugin: amazon.aws.aws_ec2   # Use AWS Ec2 inventory plugin
+regions:                     # where to search EC2
+  - ap-south-1
+
+filters:                       # Only running instances with tags
+  instance-state-name: running
+  tag:Role: managed
+  tag:Env: dev
+
+hostnames:                      # how hosts are named
+  - private-ip-address
+
+compose:                         # set ansible_host
+  ansible_host: private-ip-address
+
+
+
